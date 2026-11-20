@@ -1,0 +1,26 @@
+<resources>
+
+    <string name="app_name">Bill split</string>
+    <string name="log_in">Log in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="log_in_text">Dont have account?</string>
+    <string name="log_in_btn">Log in</string>
+    <string name="username">Enter username</string>
+    <string name="password">Enter password</string>
+    <string name="sign_up_text">Already have account?</string>
+    <string name="sign_up_confirm_password">Confirm password</string>
+    <string name="sign_up_button">Sign up</string>
+    <string name="account_name">Account Name</string>
+    <string name="txtAccountName">Mark</string>
+    <string name="total">Total spent</string>
+    <string name="txtTotalSpent">₱399.34</string>
+    <string name="bill_splitted">Bill splitted</string>
+    <string name="txtBillSplitted">2</string>
+    <string name="recent_bill">Recent bill</string>"
+    <string name="biller">Jollibee</string>
+    <string name="split_to">Split to  :</string>"
+    <string name="total_bill">Total Bill  :</string>"
+    <string name="split_cost">Split Cost  :</string>"
+    <string name="date">Date       :</string>"
+
+</resources>
