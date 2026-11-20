@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#EEEEEE">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:gravity="center_vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/app_name"
+            android:textColor="#1877F2"
+            android:textSize="27sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"/>
+
+    </LinearLayout>
+
+    <!-- ACCOUNT INFORMATION CARD -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#FFFFFF">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/account_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="@string/account_name"
+                    android:textColor="#888888"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/txtAccountName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/txtAccountName"
+                    android:textColor="#111111"
+                    android:textSize="16sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/total_spent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="monospace"
+                    android:text="@string/total"
+                    android:textColor="#888888"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/txtTotalSpent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/txtTotalSpent"
+                    android:textColor="#111111"
+                    android:textSize="16sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/bill_splitted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="monospace"
+                    android:text="Bill splitted"
+                    android:textColor="#888888"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/txtBillSplitted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/txtBillSplitted"
+                    android:textColor="#111111"
+                    android:textSize="16sp"
+                    android:fontFamily="monospace"/>
+
+            </LinearLayout>
+
+            <!-- BLUE TRIANGLES -->
+
+        </FrameLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- RECENT BILL SECTION -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="34dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="22dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recent_bill"
+                android:textSize="20sp"
+                android:textColor="#111111"
+                android:fontFamily="monospace"/>
+
+            <!-- JOLLIBEE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:layout_marginTop="22dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:src="@drawable/jollibee_logo"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="Jollibee Logo"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="@string/biller"
+                        android:textColor="#111111"
+                        android:textSize="11sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="@string/split_to"
+                        android:textColor="#111111"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="@string/total_bill"
+                        android:textColor="#111111"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="@string/split_cost"
+                        android:textColor="#111111"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="@string/date"
+                        android:textColor="#111111"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- STARBUCKS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:src="@drawable/starbucks_logo"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="Starbucks Logo"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="@string/biller"
+                        android:textColor="#111111"
+                        android:textSize="11sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="@string/split_to"
+                        android:textColor="#111111"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="@string/total_bill"
+                        android:textColor="#111111"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="@string/split_cost"
+                        android:textColor="#111111"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="@string/date"
+                        android:textColor="#111111"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:src="@drawable/starbucks_logo"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="Starbucks Logo"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="@string/biller"
+                        android:textColor="#111111"
+                        android:textSize="11sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="@string/split_to"
+                        android:textColor="#111111"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="@string/total_bill"
+                        android:textColor="#111111"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="@string/split_cost"
+                        android:textColor="#111111"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:text="@string/date"
+                        android:textColor="#111111"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- BOTTOM NAVIGATION -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="113dp"
+            android:layout_height="47dp"
+            android:contentDescription="@string/home"
+            android:src="@drawable/outline_home_"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#1777F1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="▧"
+            android:textColor="#000000"
+            android:textSize="34sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="▤"
+            android:textColor="#000000"
+            android:textSize="34sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
