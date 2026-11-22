@@ -1,82 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/billItemCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp">
+    android:layout_marginBottom="10dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="0dp"
+    app:strokeColor="#E8EDF5"
+    app:strokeWidth="1dp">
 
-    <!-- LOGO (or first-letter badge when there is no logo file) -->
-    <FrameLayout
-        android:layout_width="56dp"
-        android:layout_height="56dp">
-
-        <ImageView
-            android:id="@+id/imgLogo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="Merchant logo"
-            android:scaleType="fitCenter"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/txtLogoLetter"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_logo_placeholder"
-            android:fontFamily="@font/azeretmono_bold"
-            android:gravity="center"
-            android:textColor="#1777F2"
-            android:textSize="22sp" />
-    </FrameLayout>
-
-    <!-- DETAILS -->
-    <LinearLayout
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:padding="14dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/badgeCard"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:cardBackgroundColor="#FFF1D6"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txtBadgeInitial"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="M"
+                android:textColor="#C68A1A"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
-            android:id="@+id/txtMerchant"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtBillTitle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:textColor="#111111"
-            android:textSize="8sp" />
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="McDonald's"
+            android:textColor="#111827"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/txtBillAmount"
+            app:layout_constraintStart_toEndOf="@id/badgeCard"
+            app:layout_constraintTop_toTopOf="@id/badgeCard" />
 
         <TextView
-            android:id="@+id/txtSplitTo"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtBillMeta"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:textColor="#111111"
-            android:textSize="8sp" />
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="6 people · 11/21/2026"
+            android:textColor="#6B7280"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/txtBillAmount"
+            app:layout_constraintStart_toEndOf="@id/badgeCard"
+            app:layout_constraintTop_toBottomOf="@id/txtBillTitle" />
 
         <TextView
-            android:id="@+id/txtTotalBill"
+            android:id="@+id/txtBillAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:textColor="#111111"
-            android:textSize="8sp" />
+            android:layout_marginEnd="10dp"
+            android:text="₱833.33"
+            android:textColor="#111827"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/btnDelete"
+            app:layout_constraintTop_toTopOf="@id/badgeCard" />
 
         <TextView
-            android:id="@+id/txtSplitCost"
+            android:id="@+id/txtBillTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:textColor="#111111"
-            android:textSize="8sp" />
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="10dp"
+            android:text="of ₱5,000"
+            android:textColor="#6B7280"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/btnDelete"
+            app:layout_constraintTop_toBottomOf="@id/txtBillAmount" />
 
-        <TextView
-            android:id="@+id/txtDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:textColor="#111111"
-            android:textSize="8sp" />
-    </LinearLayout>
-</LinearLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnDelete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:clickable="true"
+            android:contentDescription="Delete bill"
+            android:focusable="true"
+            app:cardBackgroundColor="#FEF2F2"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:strokeColor="#FEE2E2"
+            app:strokeWidth="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:contentDescription="Delete icon"
+                android:src="@drawable/ic_delete"
+                app:tint="#DC2626" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

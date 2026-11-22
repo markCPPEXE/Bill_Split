@@ -1,313 +1,323 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEEEEE"
-    android:orientation="vertical">
+    android:background="#F5F7FB">
 
-    <!-- HEADER -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/azeretmono_bold"
-            android:gravity="center_vertical"
-            android:paddingStart="35dp"
-            android:text="Bill split"
-            android:textColor="#1777F2"
-            android:textSize="34sp"
-            android:textStyle="bold" />
+    <!-- Top Back Button & Profile Title -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/btnBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:contentDescription="Back"
+        android:focusable="true"
+        app:cardBackgroundColor="#ECEFF6"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imgProfile"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:layout_marginEnd="22dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="Profile"
-            android:focusable="true"
-            android:padding="10dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_profile" />
-    </LinearLayout>
+            android:id="@+id/imgBack"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            android:contentDescription="Back arrow"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="#111827" />
+    </com.google.android.material.card.MaterialCardView>
 
-    <!-- PROFILE CARD -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/txtProfileHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="20dp"
+        android:text="Profile"
+        android:textColor="#111827"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnBack"
+        app:layout_constraintTop_toTopOf="@id/btnBack" />
+
+    <!-- Scrollable Profile Content -->
+    <ScrollView
+        android:id="@+id/profileScroll"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="26dp"
-        app:cardElevation="0dp">
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:paddingTop="24dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBack">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:fillViewport="true"
-                android:overScrollMode="never">
+            <!-- Centered Avatar -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/avatarCard"
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                app:cardBackgroundColor="#DCE5FF"
+                app:cardCornerRadius="38dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/txtAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="M"
+                    android:textColor="#2962FF"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- User Name & Membership Badge -->
+            <TextView
+                android:id="@+id/txtProfileName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="mark"
+                android:textColor="#111827"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/avatarCard" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/memberBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="#E6ECFF"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtProfileName">
+
+                <TextView
+                    android:id="@+id/txtMembershipBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:text="Bill Split member"
+                    android:textColor="#2962FF"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Side-by-Side Stats Cards -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/billsSplitCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="6dp"
+                app:cardBackgroundColor="#0D1B5E"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toStartOf="@id/amountSpentCard"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/memberBadge">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingStart="20dp"
-                    android:paddingTop="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="12dp">
+                    android:padding="18dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/azeretmono_bold"
-                        android:text="Profile"
-                        android:textColor="#1777F2"
-                        android:textSize="28sp" />
+                        android:text="Bills split"
+                        android:textColor="#B8C4E8"
+                        android:textSize="12sp" />
 
-                    <!-- AVATAR + NAME -->
+                    <TextView
+                        android:id="@+id/txtBillSplitted"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="3"
+                        android:textColor="#FFFFFF"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/amountSpentCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E8EDF5"
+                app:strokeWidth="1dp"
+                app:layout_constraintBottom_toBottomOf="@id/billsSplitCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/billsSplitCard"
+                app:layout_constraintTop_toTopOf="@id/billsSplitCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Amount spent"
+                        android:textColor="#6B7280"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/txtAmountSpent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="₱1,266.33"
+                        android:textColor="#111827"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Account Details Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/accountDetailsCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E8EDF5"
+                app:strokeWidth="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/billsSplitCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="18dp"
+                    android:paddingVertical="6dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingVertical="14dp">
 
                         <TextView
-                            android:id="@+id/txtAvatar"
-                            android:layout_width="68dp"
-                            android:layout_height="68dp"
-                            android:background="@drawable/bg_logo_placeholder"
-                            android:fontFamily="@font/azeretmono_bold"
-                            android:gravity="center"
-                            android:textColor="#1777F2"
-                            android:textSize="28sp" />
-
-                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
                             android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:text="Account name"
+                            android:textColor="#6B7280"
+                            android:textSize="14sp" />
 
-                            <TextView
-                                android:id="@+id/txtProfileName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:fontFamily="@font/azeretmono_bold"
-                                android:maxLines="1"
-                                android:textColor="#171717"
-                                android:textSize="20sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
-                                android:fontFamily="@font/azeretmono_regular"
-                                android:text="Bill Split member"
-                                android:textColor="#888888"
-                                android:textSize="12sp" />
-                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/txtAccountName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="mark"
+                            android:textColor="#111827"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
-                    <!-- SECTION TITLE -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="28dp"
-                        android:layout_marginBottom="10dp"
-                        android:fontFamily="@font/azeretmono_bold"
-                        android:text="Account details"
-                        android:textColor="#171717"
-                        android:textSize="14sp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#EEF1F6" />
 
-                    <!-- DETAILS -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_profile_section"
-                        android:orientation="vertical"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingVertical="14dp">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingTop="14dp"
-                            android:paddingBottom="14dp">
+                            android:layout_weight="1"
+                            android:text="Membership"
+                            android:textColor="#6B7280"
+                            android:textSize="14sp" />
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/azeretmono_regular"
-                                android:text="Account name"
-                                android:textColor="#888888"
-                                android:textSize="12sp" />
-
-                            <TextView
-                                android:id="@+id/txtAccountName"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/azeretmono_bold"
-                                android:textColor="#171717"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="#E8ECF2" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/txtMembershipValue"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingTop="14dp"
-                            android:paddingBottom="14dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/azeretmono_regular"
-                                android:text="Bill splitted"
-                                android:textColor="#888888"
-                                android:textSize="12sp" />
-
-                            <TextView
-                                android:id="@+id/txtBillSplitted"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/azeretmono_bold"
-                                android:textColor="#171717"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="#E8ECF2" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingTop="14dp"
-                            android:paddingBottom="14dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/azeretmono_regular"
-                                android:text="Amount spent"
-                                android:textColor="#888888"
-                                android:textSize="12sp" />
-
-                            <TextView
-                                android:id="@+id/txtAmountSpent"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/azeretmono_bold"
-                                android:textColor="#171717"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
+                            android:text="Bill Split member"
+                            android:textColor="#111827"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
-            </ScrollView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <!-- LOG OUT -->
+            <!-- Log Out Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogout"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/azeretmono_bold"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="48dp"
+                android:backgroundTint="#FCECEC"
                 android:text="Log out"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
-                app:backgroundTint="#E53935"
-                app:cornerRadius="14dp"
+                android:textColor="#D94136"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:cornerRadius="16dp"
+                app:elevation="0dp"
                 app:icon="@drawable/ic_logout"
                 app:iconGravity="textStart"
-                app:iconPadding="10dp"
-                app:iconTint="#FFFFFF" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                app:iconPadding="8dp"
+                app:iconTint="#D94136"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/accountDetailsCard"
+                app:layout_constraintVertical_bias="1.0"
+                app:strokeColor="#F5C2C0"
+                app:strokeWidth="1dp" />
 
-    <!-- BOTTOM NAVIGATION -->
-    <LinearLayout
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="#FFFFFF"
-        android:elevation="8dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp">
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-        <ImageView
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="Home"
-            android:focusable="true"
-            android:padding="19dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/icons8_home_50" />
-
-        <ImageView
-            android:id="@+id/navSplit"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="Split"
-            android:focusable="true"
-            android:padding="19dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/icons8_plus_50" />
-
-        <ImageView
-            android:id="@+id/navHistory"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="History"
-            android:focusable="true"
-            android:padding="19dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/icons8_history_50" />
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
