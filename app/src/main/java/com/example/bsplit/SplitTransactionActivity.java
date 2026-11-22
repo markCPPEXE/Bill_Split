@@ -7,7 +7,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +21,7 @@ public class SplitTransactionActivity extends AppCompatActivity {
     private EditText edtBiller, edtSplitPeople, edtTotalAmount;
     private TextView txtSplitAmount;
     private Button btnSplit;
+    private String lastSplitText = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,17 @@ public class SplitTransactionActivity extends AppCompatActivity {
         txtSplitAmount = findViewById(R.id.txtSplitAmount);
         btnSplit = findViewById(R.id.btnSplit);
 
-        // Split amount updates live while the user types.
+        UIUtils.applyTouchScale(btnSplit);
+        UIUtils.applyTouchScale(findViewById(R.id.splitResultCard));
+
+        UIUtils.animateStaggered(50, 60,
+                findViewById(R.id.txtSplitHeading),
+                findViewById(R.id.txtSplitSubheading),
+                findViewById(R.id.splitInputCard),
+                findViewById(R.id.splitResultCard),
+                btnSplit
+        );
+
         TextWatcher liveUpdate = new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
@@ -43,7 +53,6 @@ public class SplitTransactionActivity extends AppCompatActivity {
         edtSplitPeople.addTextChangedListener(liveUpdate);
         edtTotalAmount.addTextChangedListener(liveUpdate);
 
-        // "Done" on the keyboard acts like pressing Split!
         edtTotalAmount.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 saveBill();
@@ -54,20 +63,26 @@ public class SplitTransactionActivity extends AppCompatActivity {
 
         btnSplit.setOnClickListener(v -> saveBill());
 
-        updatePreview(); // shows ₱0.00 with the correct font from the start
+        updatePreview();
 
         BottomNav.setup(this, BottomNav.SPLIT);
     }
 
-    /** Shows total / people while typing, or ₱0.00 when the input is not valid yet. */
     private void updatePreview() {
         BigDecimal total = parseTotal();
         int people = parsePeople();
+        String formatted;
         if (total == null || people <= 0 || total.signum() <= 0) {
-            Peso.setText(txtSplitAmount, Peso.format(0));
-            return;
+            formatted = Peso.format(0);
+        } else {
+            formatted = Peso.format(computeSplit(total, people).doubleValue());
         }
-        Peso.setText(txtSplitAmount, Peso.format(computeSplit(total, people).doubleValue()));
+
+        if (!formatted.equals(lastSplitText)) {
+            Peso.setText(txtSplitAmount, formatted);
+            UIUtils.pulse(txtSplitAmount);
+            lastSplitText = formatted;
+        }
     }
 
     private void saveBill() {
@@ -93,7 +108,7 @@ public class SplitTransactionActivity extends AppCompatActivity {
 
         String username = BillStorage.getCurrentUser(this);
         if (username.isEmpty()) {
-            toast("Please log in first.");
+            UIUtils.showBanner(this, "Please log in first.", true);
             return;
         }
 
@@ -104,13 +119,12 @@ public class SplitTransactionActivity extends AppCompatActivity {
                 total.doubleValue(), people, splitCost.doubleValue(), date);
 
         Peso.setText(txtSplitAmount, Peso.format(splitCost.doubleValue()));
-        toast("Bill saved!");
+        UIUtils.pulse(txtSplitAmount);
+        UIUtils.showBanner(this, "Bill saved successfully!", false);
 
-        // Return to Home; Home refreshes the totals and the recent bills in onResume().
         BottomNav.goHome(this, BottomNav.SPLIT);
     }
 
-    // total ÷ people, rounded to 2 decimal places (5000 / 7 = 714.29)
     private BigDecimal computeSplit(BigDecimal total, int people) {
         return total.divide(new BigDecimal(people), 2, RoundingMode.HALF_UP);
     }
@@ -133,9 +147,5 @@ public class SplitTransactionActivity extends AppCompatActivity {
         } catch (NumberFormatException e) {
             return 0;
         }
-    }
-
-    private void toast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

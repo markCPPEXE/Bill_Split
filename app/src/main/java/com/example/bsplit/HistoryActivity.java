@@ -25,8 +25,18 @@ public class HistoryActivity extends AppCompatActivity {
         recycler = findViewById(R.id.historyRecycler);
         emptyText = findViewById(R.id.txtEmptyHistory);
         recycler.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecentBillAdapter();
+        adapter = new RecentBillAdapter(true);
+        adapter.setOnBillActionListener((position, bill) -> {
+            String username = BillStorage.getCurrentUser(this);
+            BillStorage.deleteBill(this, username, position);
+            refreshHistory();
+        });
         recycler.setAdapter(adapter);
+
+        UIUtils.animateStaggered(50, 60,
+                findViewById(R.id.recent_bill),
+                findViewById(R.id.txtHistorySubtitle)
+        );
 
         BottomNav.setup(this, BottomNav.HISTORY);
     }
@@ -34,9 +44,19 @@ public class HistoryActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        refreshHistory();
+    }
+
+    private void refreshHistory() {
         String username = BillStorage.getCurrentUser(this);
         List<BillStorage.Bill> bills = BillStorage.getRecentBills(this, username, Integer.MAX_VALUE);
         adapter.setBills(bills);
+
+        int count = bills.size();
+        TextView subtitle = findViewById(R.id.txtHistorySubtitle);
+        if (subtitle != null) {
+            subtitle.setText(count + (count == 1 ? " bill split so far" : " bills split so far"));
+        }
 
         boolean isEmpty = bills.isEmpty();
         emptyText.setVisibility(isEmpty ? View.VISIBLE : View.GONE);

@@ -10,7 +10,6 @@ import org.json.JSONObject;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public final class BillStorage {
@@ -66,11 +65,29 @@ public final class BillStorage {
             bill.put("splitTo", splitTo);
             bill.put("splitCost", splitCost);
             bill.put("date", date);
-            // New transactions are inserted at the beginning.
+
             JSONArray updated = new JSONArray();
             updated.put(bill);
             for (int i = 0; i < bills.length(); i++) updated.put(bills.getJSONObject(i));
             p.edit().putString(key, updated.toString()).apply();
+        } catch (JSONException ignored) {
+        }
+    }
+
+    public static void deleteBill(Context context, String username, int index) {
+        SharedPreferences p = prefs(context);
+        String key = userKey(username, "bills");
+        try {
+            JSONArray bills = new JSONArray(p.getString(key, "[]"));
+            if (index >= 0 && index < bills.length()) {
+                JSONArray updated = new JSONArray();
+                for (int i = 0; i < bills.length(); i++) {
+                    if (i != index) {
+                        updated.put(bills.getJSONObject(i));
+                    }
+                }
+                p.edit().putString(key, updated.toString()).apply();
+            }
         } catch (JSONException ignored) {
         }
     }

@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Bsplit" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="fontFamily">@font/plus_jakarta_sans_family</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans_family</item>
     </style>
 
     <style name="RoundedInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
