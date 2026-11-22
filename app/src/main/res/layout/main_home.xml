@@ -4,623 +4,466 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FB">
+    android:background="@color/bg_screen">
 
-    <!-- Top Greeting & Profile Avatar Header (Always Visible) -->
-    <TextView
-        android:id="@+id/txtWelcomeLabel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="12dp"
-        android:text="Welcome back,"
-        android:textColor="#6B7280"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@id/imgProfile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtAccountName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="12dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/plus_jakarta_sans"
-        android:maxLines="1"
-        android:text="mark"
-        android:textColor="#111827"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/imgProfile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtWelcomeLabel" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/imgProfile"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_marginEnd="20dp"
-        android:clickable="true"
-        android:contentDescription="Profile"
-        android:focusable="true"
-        app:cardBackgroundColor="#E3EAFF"
-        app:cardCornerRadius="22dp"
-        app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/txtAccountName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/txtWelcomeLabel">
-
-        <ImageView
-            android:id="@+id/imgProfileIcon"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_gravity="center"
-            android:contentDescription="Profile icon"
-            android:src="@drawable/ic_profile"
-            app:tint="#2962FF" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <!-- Main Content Containers Frame -->
-    <FrameLayout
-        android:id="@+id/contentFrame"
+    <!-- Scrollable Main Container -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/homeScroll"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationInclude"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:paddingBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtAccountName">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!-- TAB 1: HOME CONTENT (Hero Summary + Recent Bills) -->
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/containerHome"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:fillViewport="true"
-            android:overScrollMode="never"
-            android:paddingBottom="16dp"
-            android:visibility="visible">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!-- TAB 1: HOME SECTION -->
+            <LinearLayout
+                android:id="@+id/containerHome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp">
+                android:orientation="vertical"
+                android:visibility="visible">
 
-                <!-- Hero Summary Card -->
+                <!-- Header Profile Row -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="12dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/welcome_back_label"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/txtAccountName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/txtAccountName"
+                            android:textColor="@color/text_primary"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/imgProfile"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:clickable="true"
+                        android:contentDescription="@string/profile"
+                        android:focusable="true"
+                        app:cardBackgroundColor="@color/bg_blue_avatar"
+                        app:cardCornerRadius="22dp"
+                        app:cardElevation="0dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/profile_icon"
+                            android:src="@drawable/ic_profile"
+                            app:tint="@color/colorPrimary" />
+                    </com.google.android.material.card.MaterialCardView>
+                </RelativeLayout>
+
+                <!-- Hero Balance Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/heroCard"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="8dp"
-                    app:cardBackgroundColor="#0D1B5E"
+                    app:cardBackgroundColor="@color/bg_deep_navy"
                     app:cardCornerRadius="24dp"
-                    app:cardElevation="0dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:cardElevation="0dp">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="22dp">
 
+                        <ImageView
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:alpha="0.12"
+                            android:contentDescription="@string/hero_bg"
+                            android:src="@drawable/icons8_history_50"
+                            app:tint="@color/tint_light_blue" />
+
                         <TextView
-                            android:id="@+id/txtTotalSpentLabel"
+                            android:id="@+id/lblTotalSpent"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total spent"
-                            android:textColor="#B8C4E8"
-                            android:textSize="13sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:text="@string/total"
+                            android:textColor="@color/text_navy_light"
+                            android:textSize="13sp" />
 
                         <TextView
                             android:id="@+id/txtTotalSpent"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="₱1,266.33"
-                            android:textColor="#FFFFFF"
-                            android:textSize="32sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/txtTotalSpentLabel" />
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/billCountBadge"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="18dp"
-                            app:cardBackgroundColor="#1E307A"
-                            app:cardCornerRadius="20dp"
-                            app:cardElevation="0dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/txtTotalSpent">
+                            android:layout_below="@id/lblTotalSpent"
+                            android:layout_marginTop="6dp"
+                            android:text="@string/txtTotalSpent"
+                            android:textColor="@color/white"
+                            android:textSize="32sp"
+                            android:textStyle="bold" />
 
-                            <TextView
-                                android:id="@+id/txtBillSplitted"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txtTotalSpent"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.card.MaterialCardView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingHorizontal="14dp"
-                                android:paddingVertical="8dp"
-                                android:text="3 bills split"
-                                android:textColor="#DCE4FF"
+                                app:cardBackgroundColor="@color/bg_navy_badge"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+
+                                <TextView
+                                    android:id="@+id/txtBillSplitted"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingHorizontal="12dp"
+                                    android:paddingVertical="6dp"
+                                    android:text="@string/txtBillSplitted"
+                                    android:textColor="@color/text_badge_light"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_weight="1" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnSplitBill"
+                                style="@style/PrimaryButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:paddingHorizontal="16dp"
+                                android:text="@string/btn_quick_split"
                                 android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </com.google.android.material.card.MaterialCardView>
+                                app:cornerRadius="12dp"
+                                app:elevation="0dp" />
+                        </LinearLayout>
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnSplitBill"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:backgroundTint="#FFFFFF"
-                            android:insetTop="0dp"
-                            android:insetBottom="0dp"
-                            android:paddingHorizontal="16dp"
-                            android:text="+ Quick Split"
-                            android:textAllCaps="false"
-                            android:textColor="#0D1B5E"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            app:cornerRadius="20dp"
-                            app:elevation="0dp"
-                            app:layout_constraintBottom_toBottomOf="@id/billCountBadge"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/billCountBadge" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Recent Bills Header -->
-                <TextView
-                    android:id="@+id/recent_bill"
-                    android:layout_width="0dp"
+                <!-- Recent Transactions Header -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="Recent bills"
-                    android:textColor="#111827"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@id/txtSeeAll"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/heroCard" />
+                    android:paddingHorizontal="20dp"
+                    android:paddingTop="24dp"
+                    android:paddingBottom="12dp">
 
-                <TextView
-                    android:id="@+id/txtSeeAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:minHeight="40dp"
-                    android:text="See all"
-                    android:textColor="#2962FF"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBaseline_toBaselineOf="@id/recent_bill"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="@string/recent_bills"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                <!-- Recent Bills List -->
+                    <TextView
+                        android:id="@+id/txtSeeAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="4dp"
+                        android:text="@string/see_all"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <!-- Recent Bills Recycler -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recentBillsRecycler"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
                     android:clipToPadding="false"
-                    android:nestedScrollingEnabled="false"
                     android:overScrollMode="never"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/recent_bill" />
+                    android:paddingHorizontal="20dp" />
 
                 <TextView
                     android:id="@+id/txtEmptyBills"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="12dp"
                     android:gravity="center"
-                    android:text="No bill transactions yet."
-                    android:textColor="#6B7280"
+                    android:padding="20dp"
+                    android:text="@string/no_bills_yet"
+                    android:textColor="@color/text_secondary"
                     android:textSize="13sp"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/recent_bill" />
+                    android:visibility="gone" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
 
-        <!-- TAB 2: SPLIT A BILL CONTENT -->
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/containerSplit"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:fillViewport="true"
-            android:overScrollMode="never"
-            android:paddingBottom="16dp"
-            android:visibility="gone">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!-- TAB 2: SPLIT FORM SECTION -->
+            <LinearLayout
+                android:id="@+id/containerSplit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp">
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="20dp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/txtSplitHeading"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Split a bill"
-                    android:textColor="#111827"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:text="@string/split_heading"
+                    android:textColor="@color/text_primary"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtSplitSubheading"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="Enter the details and we'll do the math."
-                    android:textColor="#6B7280"
-                    android:textSize="13sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txtSplitHeading" />
+                    android:layout_marginTop="4dp"
+                    android:text="@string/split_subheading"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
 
-                <!-- White Input Card -->
+                <!-- Split Input Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/splitInputCard"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="24dp"
+                    android:layout_marginTop="18dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
-                    app:strokeColor="#E8EDF5"
-                    app:strokeWidth="1dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txtSplitSubheading">
+                    app:strokeColor="@color/stroke_card"
+                    app:strokeWidth="1dp">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="18dp">
-
-                        <!-- Biller -->
-                        <TextView
-                            android:id="@+id/lblBiller"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Biller"
-                            android:textColor="#111827"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        android:orientation="vertical"
+                        android:padding="20dp">
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilBiller"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="0dp"
+                            style="@style/RoundedInput"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            app:boxBackgroundColor="#F8FAFC"
-                            app:boxCornerRadiusBottomEnd="14dp"
-                            app:boxCornerRadiusBottomStart="14dp"
-                            app:boxCornerRadiusTopEnd="14dp"
-                            app:boxCornerRadiusTopStart="14dp"
-                            app:boxStrokeColor="#CBD5E1"
-                            app:boxStrokeWidth="1dp"
-                            app:boxStrokeWidthFocused="2dp"
-                            app:hintEnabled="false"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/lblBiller">
+                            android:hint="@string/label_biller">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/edtBiller"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="e.g. Jollibee"
-                                android:imeOptions="actionNext"
+                                android:hint="@string/hint_biller"
                                 android:inputType="textCapWords"
-                                android:maxLength="30"
-                                android:maxLines="1"
-                                android:paddingVertical="13dp"
-                                android:textColor="#111827"
-                                android:textColorHint="#9CA3AF"
-                                android:textSize="14sp" />
+                                android:textColor="@color/text_primary"
+                                android:textSize="15sp" />
                         </com.google.android.material.textfield.TextInputLayout>
-
-                        <!-- Split in to -->
-                        <TextView
-                            android:id="@+id/lblSplitPeople"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="14dp"
-                            android:layout_marginEnd="6dp"
-                            android:text="Split in to"
-                            android:textColor="#111827"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toStartOf="@id/lblTotalAmount"
-                            app:layout_constraintHorizontal_chainStyle="spread"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tilBiller" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilSplitPeople"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="0dp"
+                            style="@style/RoundedInput"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:layout_marginEnd="6dp"
-                            app:boxBackgroundColor="#F8FAFC"
-                            app:boxCornerRadiusBottomEnd="14dp"
-                            app:boxCornerRadiusBottomStart="14dp"
-                            app:boxCornerRadiusTopEnd="14dp"
-                            app:boxCornerRadiusTopStart="14dp"
-                            app:boxStrokeColor="#CBD5E1"
-                            app:boxStrokeWidth="1dp"
-                            app:boxStrokeWidthFocused="2dp"
-                            app:hintEnabled="false"
-                            app:layout_constraintEnd_toStartOf="@id/tilTotalAmount"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/lblSplitPeople">
+                            android:layout_marginTop="14dp"
+                            android:hint="@string/label_split_people">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/edtSplitPeople"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="e.g. 3"
-                                android:imeOptions="actionNext"
+                                android:hint="@string/hint_split_people"
                                 android:inputType="number"
-                                android:maxLength="3"
-                                android:maxLines="1"
-                                android:paddingVertical="13dp"
-                                android:textColor="#111827"
-                                android:textColorHint="#9CA3AF"
-                                android:textSize="14sp" />
+                                android:textColor="@color/text_primary"
+                                android:textSize="15sp" />
                         </com.google.android.material.textfield.TextInputLayout>
-
-                        <!-- Total amount (₱) -->
-                        <TextView
-                            android:id="@+id/lblTotalAmount"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="6dp"
-                            android:text="Total amount (₱)"
-                            android:textColor="#111827"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBaseline_toBaselineOf="@id/lblSplitPeople"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/lblSplitPeople" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/tilTotalAmount"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="0dp"
+                            style="@style/RoundedInput"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="6dp"
-                            android:layout_marginTop="6dp"
-                            app:boxBackgroundColor="#F8FAFC"
-                            app:boxCornerRadiusBottomEnd="14dp"
-                            app:boxCornerRadiusBottomStart="14dp"
-                            app:boxCornerRadiusTopEnd="14dp"
-                            app:boxCornerRadiusTopStart="14dp"
-                            app:boxStrokeColor="#CBD5E1"
-                            app:boxStrokeWidth="1dp"
-                            app:boxStrokeWidthFocused="2dp"
-                            app:hintEnabled="false"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/tilSplitPeople"
-                            app:layout_constraintTop_toBottomOf="@id/lblTotalAmount">
+                            android:layout_marginTop="14dp"
+                            android:hint="@string/label_total_amount">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/edtTotalAmount"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="e.g. 599"
-                                android:imeOptions="actionDone"
+                                android:hint="@string/hint_total_amount"
                                 android:inputType="numberDecimal"
-                                android:maxLength="12"
-                                android:maxLines="1"
-                                android:paddingVertical="13dp"
-                                android:textColor="#111827"
-                                android:textColorHint="#9CA3AF"
-                                android:textSize="14sp" />
+                                android:textColor="@color/text_primary"
+                                android:textSize="15sp" />
                         </com.google.android.material.textfield.TextInputLayout>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Result Card -->
+                <!-- Dynamic Live Result Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/splitResultCard"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    app:cardBackgroundColor="#0D1B5E"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="0dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/splitInputCard">
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/bg_deep_navy"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="20dp">
+                        android:padding="22dp">
 
                         <TextView
-                            android:id="@+id/txtEachPersonLabel"
-                            android:layout_width="0dp"
+                            android:id="@+id/lblEachPays"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
-                            android:text="Each person pays"
-                            android:textColor="#B8C4E8"
-                            android:textSize="13sp"
-                            app:layout_constraintEnd_toStartOf="@id/groupBadge"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:text="@string/each_person_pays"
+                            android:textColor="@color/text_navy_light"
+                            android:textSize="13sp" />
 
                         <TextView
                             android:id="@+id/txtSplitAmount"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@id/lblEachPays"
                             android:layout_marginTop="6dp"
-                            android:layout_marginEnd="12dp"
-                            android:text="₱0.00"
-                            android:textColor="#FFFFFF"
-                            android:textSize="28sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/groupBadge"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/txtEachPersonLabel" />
+                            android:text="@string/initial_split_amount"
+                            android:textColor="@color/white"
+                            android:textSize="32sp"
+                            android:textStyle="bold" />
 
                         <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/groupBadge"
                             android:layout_width="44dp"
                             android:layout_height="44dp"
-                            app:cardBackgroundColor="#223585"
-                            app:cardCornerRadius="14dp"
-                            app:cardElevation="0dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            app:cardBackgroundColor="@color/bg_navy_group"
+                            app:cardCornerRadius="22dp"
+                            app:cardElevation="0dp">
 
                             <ImageView
-                                android:id="@+id/imgGroup"
-                                android:layout_width="29dp"
-                                android:layout_height="26dp"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
                                 android:layout_gravity="center"
-                                android:contentDescription="Group icon"
-                                android:src="@drawable/ic_groups"
-                                app:tint="#8FA8FF" />
+                                android:contentDescription="@string/group_icon"
+                                android:src="@drawable/ic_profile"
+                                app:tint="@color/tint_light_blue" />
                         </com.google.android.material.card.MaterialCardView>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Primary Split Button -->
+                <!-- Submit Button -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSplit"
-                    android:layout_width="0dp"
-                    android:layout_height="52dp"
-                    android:layout_marginTop="14dp"
-                    android:backgroundTint="#2962FF"
-                    android:stateListAnimator="@null"
-                    android:text="Split!"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
+                    style="@style/PrimaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/btn_split"
                     app:cornerRadius="16dp"
-                    app:elevation="0dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/splitResultCard" />
+                    app:elevation="0dp" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
 
-        <!-- TAB 3: HISTORY CONTENT -->
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/containerHistory"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:fillViewport="true"
-            android:overScrollMode="never"
-            android:paddingBottom="16dp"
-            android:visibility="gone">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!-- TAB 3: HISTORY SECTION -->
+            <LinearLayout
+                android:id="@+id/containerHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp">
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="20dp"
+                android:visibility="gone">
 
                 <TextView
-                    android:id="@+id/txtHistoryHeading"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Transaction History"
-                    android:textColor="#111827"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:text="@string/transaction_history"
+                    android:textColor="@color/text_primary"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtHistorySubtitle"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="3 bills split so far"
-                    android:textColor="#6B7280"
-                    android:textSize="13sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txtHistoryHeading" />
+                    android:layout_marginTop="4dp"
+                    android:text="@string/history_subtitle"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
 
-                <!-- Full History RecyclerView -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/historyRecycler"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:clipToPadding="false"
-                    android:nestedScrollingEnabled="false"
-                    android:overScrollMode="never"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txtHistorySubtitle" />
+                    android:overScrollMode="never" />
 
                 <TextView
                     android:id="@+id/txtEmptyHistory"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:text="No bill transactions yet."
-                    android:textColor="#6B7280"
+                    android:padding="20dp"
+                    android:text="@string/no_bills_yet"
+                    android:textColor="@color/text_secondary"
                     android:textSize="13sp"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txtHistorySubtitle" />
+                    android:visibility="gone" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
 
-    </FrameLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-    <!-- Bottom Navigation Bar (Always Visible at Bottom) -->
+    <!-- Always-Visible Bottom Navigation Bar -->
     <include
-        android:id="@+id/bottomNavigationInclude"
         layout="@layout/bottom_navigation"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="72dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

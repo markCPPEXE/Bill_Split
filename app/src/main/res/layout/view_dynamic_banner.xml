@@ -13,10 +13,10 @@
         android:id="@+id/bannerCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#DCFCE7"
+        app:cardBackgroundColor="@color/bg_success_light"
         app:cardCornerRadius="18dp"
         app:cardElevation="6dp"
-        app:strokeColor="#86EFAC"
+        app:strokeColor="@color/stroke_success_light"
         app:strokeWidth="1dp">
 
         <LinearLayout
@@ -31,9 +31,9 @@
                 android:id="@+id/bannerIcon"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:contentDescription="Status icon"
+                android:contentDescription="@string/status_icon"
                 android:src="@drawable/ic_profile"
-                app:tint="#166534" />
+                app:tint="@color/text_success_dark" />
 
             <TextView
                 android:id="@+id/bannerText"
@@ -41,8 +41,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
-                android:text="Action completed successfully."
-                android:textColor="#166534"
+                android:text="@string/action_completed"
+                android:textColor="@color/text_success_dark"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
