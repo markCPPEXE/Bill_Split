@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="24dp"
-    app:cardBackgroundColor="#FFFFFF"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="24dp"
     app:cardElevation="8dp">
 
@@ -26,7 +26,7 @@
                 android:id="@+id/dialogBadgeCard"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                app:cardBackgroundColor="#FFF1D6"
+                app:cardBackgroundColor="@color/bg_gold_badge"
                 app:cardCornerRadius="14dp"
                 app:cardElevation="0dp">
 
@@ -35,8 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="L"
-                    android:textColor="#C68A1A"
+                    android:textColor="@color/text_gold"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </com.google.android.material.card.MaterialCardView>
@@ -54,8 +53,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="Lala"
-                    android:textColor="#111827"
+                    android:textColor="@color/text_primary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -64,8 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="11/22/2026"
-                    android:textColor="#6B7280"
+                    android:textColor="@color/text_secondary"
                     android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
@@ -76,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            app:cardBackgroundColor="#0D1B5E"
+            app:cardBackgroundColor="@color/bg_deep_navy"
             app:cardCornerRadius="18dp"
             app:cardElevation="0dp">
 
@@ -89,8 +86,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Each person pays"
-                    android:textColor="#B8C4E8"
+                    android:text="@string/each_person_pays"
+                    android:textColor="@color/text_navy_light"
                     android:textSize="12sp" />
 
                 <TextView
@@ -98,8 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="₱10.60"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/white"
                     android:textSize="26sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -110,10 +106,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:cardBackgroundColor="#FFFFFF"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
-            app:strokeColor="#E8EDF5"
+            app:strokeColor="@color/stroke_card"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -134,16 +130,15 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Total Bill"
-                        android:textColor="#6B7280"
+                        android:text="@string/total_bill"
+                        android:textColor="@color/text_secondary"
                         android:textSize="13sp" />
 
                     <TextView
                         android:id="@+id/txtDialogTotalBill"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="₱3,434.00"
-                        android:textColor="#111827"
+                        android:textColor="@color/text_primary"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -151,7 +146,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#EEF1F6" />
+                    android:background="@color/divider_light" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -164,16 +159,15 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Split in to"
-                        android:textColor="#6B7280"
+                        android:text="@string/label_split_people"
+                        android:textColor="@color/text_secondary"
                         android:textSize="13sp" />
 
                     <TextView
                         android:id="@+id/txtDialogSplitPeople"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="324 people"
-                        android:textColor="#111827"
+                        android:textColor="@color/text_primary"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -184,15 +178,11 @@
         <!-- Close Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDialogClose"
+            style="@style/PrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#2962FF"
-            android:text="Close"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:textStyle="bold"
+            android:text="@string/close"
             app:cornerRadius="16dp"
             app:elevation="0dp" />
 

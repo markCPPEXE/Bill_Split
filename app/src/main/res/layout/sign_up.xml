@@ -6,7 +6,7 @@
     android:id="@+id/logIntext"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FB"
+    android:background="@color/bg_screen"
     tools:context=".MainActivity">
 
     <!-- Navy Header Card -->
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        app:cardBackgroundColor="#0F1E5A"
+        app:cardBackgroundColor="@color/bg_header_navy"
         app:cardCornerRadius="24dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toTopOf="@id/signup_form_card"
@@ -34,8 +34,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create your account"
-                android:textColor="#B8C4E6"
+                android:text="@string/create_your_account"
+                android:textColor="@color/text_navy_light"
                 android:textSize="13sp" />
 
             <TextView
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="@string/sign_up"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -59,10 +59,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="20dp"
         app:cardElevation="0dp"
-        app:strokeColor="#E6EAF2"
+        app:strokeColor="@color/stroke_card_alt"
         app:strokeWidth="1dp"
         app:layout_constraintBottom_toTopOf="@id/dhaccount"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,14 +80,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/username"
-                app:boxBackgroundColor="#F5F7FB"
+                app:boxBackgroundColor="@color/bg_screen"
                 app:boxCornerRadiusBottomEnd="14dp"
                 app:boxCornerRadiusBottomStart="14dp"
                 app:boxCornerRadiusTopEnd="14dp"
                 app:boxCornerRadiusTopStart="14dp"
-                app:boxStrokeColor="#2962FF"
+                app:boxStrokeColor="@color/colorPrimary"
                 app:boxStrokeWidthFocused="2dp"
-                app:hintTextColor="#2962FF"
+                app:hintTextColor="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -97,8 +97,8 @@
                     android:layout_height="wrap_content"
                     android:autofillHints="username"
                     android:inputType="textPersonName"
-                    android:textColor="#111827"
-                    android:textColorHighlight="#BFD2FF"
+                    android:textColor="@color/text_primary"
+                    android:textColorHighlight="@color/highlight_blue"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,16 +109,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:hint="@string/password"
-                app:boxBackgroundColor="#F5F7FB"
+                app:boxBackgroundColor="@color/bg_screen"
                 app:boxCornerRadiusBottomEnd="14dp"
                 app:boxCornerRadiusBottomStart="14dp"
                 app:boxCornerRadiusTopEnd="14dp"
                 app:boxCornerRadiusTopStart="14dp"
-                app:boxStrokeColor="#2962FF"
+                app:boxStrokeColor="@color/colorPrimary"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="password_toggle"
-                app:endIconTint="#6B7280"
-                app:hintTextColor="#2962FF"
+                app:endIconTint="@color/text_secondary"
+                app:hintTextColor="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/username">
@@ -128,8 +128,8 @@
                     android:layout_height="wrap_content"
                     android:autofillHints="password"
                     android:inputType="textPassword"
-                    android:textColor="#111827"
-                    android:textColorHighlight="#BFD2FF"
+                    android:textColor="@color/text_primary"
+                    android:textColorHighlight="@color/highlight_blue"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,16 +140,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:hint="@string/sign_up_confirm_password"
-                app:boxBackgroundColor="#F5F7FB"
+                app:boxBackgroundColor="@color/bg_screen"
                 app:boxCornerRadiusBottomEnd="14dp"
                 app:boxCornerRadiusBottomStart="14dp"
                 app:boxCornerRadiusTopEnd="14dp"
                 app:boxCornerRadiusTopStart="14dp"
-                app:boxStrokeColor="#2962FF"
+                app:boxStrokeColor="@color/colorPrimary"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="password_toggle"
-                app:endIconTint="#6B7280"
-                app:hintTextColor="#2962FF"
+                app:endIconTint="@color/text_secondary"
+                app:hintTextColor="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/password">
@@ -159,24 +159,18 @@
                     android:layout_height="wrap_content"
                     android:autofillHints="password"
                     android:inputType="textPassword"
-                    android:textColor="#111827"
-                    android:textColorHighlight="#BFD2FF"
+                    android:textColor="@color/text_primary"
+                    android:textColorHighlight="@color/highlight_blue"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/log_in_btn"
+                style="@style/PrimaryButton"
                 android:layout_width="0dp"
                 android:layout_height="54dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="#2962FF"
                 android:text="@string/sign_up_button"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:cornerRadius="16dp"
-                app:elevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/confirm_password" />
@@ -191,7 +185,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/sign_up_text"
-        android:textColor="#6B7280"
+        android:textColor="@color/text_secondary"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/signup"
@@ -211,7 +205,7 @@
         android:minHeight="48dp"
         android:paddingHorizontal="4dp"
         android:text="@string/log_in"
-        android:textColor="#2962FF"
+        android:textColor="@color/colorPrimary"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@id/dhaccount"

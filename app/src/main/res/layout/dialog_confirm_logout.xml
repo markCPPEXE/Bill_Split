@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="24dp"
-    app:cardBackgroundColor="#FFFFFF"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="24dp"
     app:cardElevation="6dp">
 
@@ -20,7 +20,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="56dp"
             android:layout_height="56dp"
-            app:cardBackgroundColor="#FEE2E2"
+            app:cardBackgroundColor="@color/bg_error_light"
             app:cardCornerRadius="28dp"
             app:cardElevation="0dp">
 
@@ -28,9 +28,9 @@
                 android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:layout_gravity="center"
-                android:contentDescription="Logout"
+                android:contentDescription="@string/logout"
                 android:src="@drawable/ic_logout"
-                app:tint="#DC2626" />
+                app:tint="@color/color_error" />
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Title -->
@@ -40,8 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:gravity="center"
-            android:text="Log Out?"
-            android:textColor="#111827"
+            android:text="@string/log_out_title"
+            android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -53,8 +53,8 @@
             android:layout_marginTop="8dp"
             android:gravity="center"
             android:lineSpacingExtra="2dp"
-            android:text="Are you sure you want to log out of your account?"
-            android:textColor="#6B7280"
+            android:text="@string/log_out_msg"
+            android:textColor="@color/text_secondary"
             android:textSize="14sp" />
 
         <!-- Buttons Row -->
@@ -66,33 +66,22 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCancel"
-                style="@style/Widget.Material3.Button.TonalButton"
+                style="@style/CancelButton"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:backgroundTint="#F3F4F6"
-                android:text="Cancel"
-                android:textAllCaps="false"
-                android:textColor="#374151"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:cornerRadius="14dp"
+                android:text="@string/cancel"
                 app:elevation="0dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnConfirmLogout"
+                style="@style/DangerButton"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:backgroundTint="#DC2626"
-                android:text="Log out"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:cornerRadius="14dp"
+                android:text="@string/log_out"
                 app:elevation="0dp" />
         </LinearLayout>
 

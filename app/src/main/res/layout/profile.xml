@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FB">
+    android:background="@color/bg_screen">
 
     <!-- Top Back Button & Profile Title -->
     <com.google.android.material.card.MaterialCardView
@@ -14,9 +14,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:clickable="true"
-        android:contentDescription="Back"
+        android:contentDescription="@string/cancel"
         android:focusable="true"
-        app:cardBackgroundColor="#ECEFF6"
+        app:cardBackgroundColor="@color/bg_btn_back"
         app:cardCornerRadius="20dp"
         app:cardElevation="0dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,9 +27,9 @@
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:layout_gravity="center"
-            android:contentDescription="Back arrow"
+            android:contentDescription="@string/back_arrow"
             android:src="@drawable/ic_arrow_back"
-            app:tint="#111827" />
+            app:tint="@color/text_primary" />
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
@@ -38,8 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginEnd="20dp"
-        android:text="Profile"
-        android:textColor="#111827"
+        android:text="@string/profile"
+        android:textColor="@color/text_primary"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/btnBack"
@@ -73,7 +73,7 @@
                 android:id="@+id/avatarCard"
                 android:layout_width="76dp"
                 android:layout_height="76dp"
-                app:cardBackgroundColor="#DCE5FF"
+                app:cardBackgroundColor="@color/bg_blue_avatar"
                 app:cardCornerRadius="38dp"
                 app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -85,8 +85,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="M"
-                    android:textColor="#2962FF"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="30sp"
                     android:textStyle="bold" />
             </com.google.android.material.card.MaterialCardView>
@@ -100,8 +99,7 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="mark"
-                android:textColor="#111827"
+                android:textColor="@color/text_primary"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -113,7 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:cardBackgroundColor="#E6ECFF"
+                app:cardBackgroundColor="@color/bg_blue_badge"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -126,8 +124,8 @@
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="4dp"
-                    android:text="Bill Split member"
-                    android:textColor="#2962FF"
+                    android:text="@string/membership_badge"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </com.google.android.material.card.MaterialCardView>
@@ -139,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="6dp"
-                app:cardBackgroundColor="#0D1B5E"
+                app:cardBackgroundColor="@color/bg_deep_navy"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:layout_constraintEnd_toStartOf="@id/amountSpentCard"
@@ -156,8 +154,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Bills split"
-                        android:textColor="#B8C4E8"
+                        android:text="@string/bill_splitted"
+                        android:textColor="@color/text_navy_light"
                         android:textSize="12sp" />
 
                     <TextView
@@ -165,8 +163,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="3"
-                        android:textColor="#FFFFFF"
+                        android:text="@string/bills_split_count"
+                        android:textColor="@color/white"
                         android:textSize="24sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -177,10 +175,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
-                app:strokeColor="#E8EDF5"
+                app:strokeColor="@color/stroke_card"
                 app:strokeWidth="1dp"
                 app:layout_constraintBottom_toBottomOf="@id/billsSplitCard"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -196,8 +194,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Amount spent"
-                        android:textColor="#6B7280"
+                        android:text="@string/amount_spent_label"
+                        android:textColor="@color/text_secondary"
                         android:textSize="12sp" />
 
                     <TextView
@@ -205,8 +203,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="₱1,266.33"
-                        android:textColor="#111827"
+                        android:textColor="@color/text_primary"
                         android:textSize="22sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -218,10 +215,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
-                app:strokeColor="#E8EDF5"
+                app:strokeColor="@color/stroke_card"
                 app:strokeWidth="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -245,16 +242,15 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Account name"
-                            android:textColor="#6B7280"
+                            android:text="@string/account_name_label"
+                            android:textColor="@color/text_secondary"
                             android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txtAccountName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="mark"
-                            android:textColor="#111827"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -262,7 +258,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#EEF1F6" />
+                        android:background="@color/divider_light" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -275,16 +271,16 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Membership"
-                            android:textColor="#6B7280"
+                            android:text="@string/membership_label"
+                            android:textColor="@color/text_secondary"
                             android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txtMembershipValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Bill Split member"
-                            android:textColor="#111827"
+                            android:text="@string/membership_badge"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -297,10 +293,10 @@
                 android:layout_width="0dp"
                 android:layout_height="52dp"
                 android:layout_marginTop="48dp"
-                android:backgroundTint="#FCECEC"
-                android:text="Log out"
+                android:backgroundTint="@color/bg_btn_logout"
+                android:text="@string/log_out"
                 android:textAllCaps="false"
-                android:textColor="#D94136"
+                android:textColor="@color/color_error_alt"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:cornerRadius="16dp"
@@ -308,13 +304,13 @@
                 app:icon="@drawable/ic_logout"
                 app:iconGravity="textStart"
                 app:iconPadding="8dp"
-                app:iconTint="#D94136"
+                app:iconTint="@color/color_error_alt"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/accountDetailsCard"
                 app:layout_constraintVertical_bias="1.0"
-                app:strokeColor="#F5C2C0"
+                app:strokeColor="@color/stroke_error_alt"
                 app:strokeWidth="1dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
