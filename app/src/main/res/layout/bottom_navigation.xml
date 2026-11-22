@@ -5,7 +5,7 @@
     android:id="@+id/bottomNavigation"
     android:layout_width="match_parent"
     android:layout_height="72dp"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     android:baselineAligned="false"
     android:elevation="8dp"
     android:gravity="center_vertical"
@@ -29,17 +29,17 @@
             android:id="@+id/imgNavHome"
             android:layout_width="22dp"
             android:layout_height="22dp"
-            android:contentDescription="Home"
+            android:contentDescription="@string/nav_home"
             android:src="@drawable/icons8_home_50"
-            app:tint="#6B7280" />
+            app:tint="@color/text_secondary" />
 
         <TextView
             android:id="@+id/txtNavHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="Home"
-            android:textColor="#6B7280"
+            android:text="@string/nav_home"
+            android:textColor="@color/text_secondary"
             android:textSize="11sp" />
     </LinearLayout>
 
@@ -55,9 +55,9 @@
             android:layout_height="52dp"
             android:layout_gravity="center"
             android:clickable="true"
-            android:contentDescription="Split"
+            android:contentDescription="@string/nav_split"
             android:focusable="true"
-            app:cardBackgroundColor="#2962FF"
+            app:cardBackgroundColor="@color/colorPrimary"
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp">
 
@@ -66,9 +66,9 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
-                android:contentDescription="Add bill"
+                android:contentDescription="@string/nav_add_bill"
                 android:src="@drawable/icons8_plus_50"
-                app:tint="#FFFFFF" />
+                app:tint="@color/white" />
         </com.google.android.material.card.MaterialCardView>
     </FrameLayout>
 
@@ -88,17 +88,17 @@
             android:id="@+id/imgNavHistory"
             android:layout_width="22dp"
             android:layout_height="22dp"
-            android:contentDescription="History"
+            android:contentDescription="@string/nav_history"
             android:src="@drawable/icons8_history_50"
-            app:tint="#6B7280" />
+            app:tint="@color/text_secondary" />
 
         <TextView
             android:id="@+id/txtNavHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="History"
-            android:textColor="#6B7280"
+            android:text="@string/nav_history"
+            android:textColor="@color/text_secondary"
             android:textSize="11sp" />
     </LinearLayout>
 

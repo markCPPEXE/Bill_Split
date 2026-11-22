@@ -26,8 +26,13 @@ import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
 
+    // Number of latest bills shown on the Home tab
+    private static final int RECENT_BILLS_LIMIT = 4;
+
     private View containerHome, containerSplit, containerHistory;
     private RecentBillAdapter recentAdapter, historyAdapter;
+    private RecyclerView recentRecyclerView;
+    private androidx.core.widget.NestedScrollView homeScroll;
 
     // Split form views
     private TextInputLayout tilBiller, tilSplitPeople, tilTotalAmount;
@@ -133,6 +138,14 @@ public class HomeActivity extends AppCompatActivity {
                 showDashboard();
             });
             recentRecycler.setAdapter(recentAdapter);
+            recentRecyclerView = recentRecycler;
+        }
+
+        homeScroll = findViewById(R.id.homeScroll);
+        if (homeScroll != null) {
+            homeScroll.addOnLayoutChangeListener((v, l, t, r, b, ol, ot, or, ob) -> {
+                if (b - t != ob - ot) fitRecentBillsToScreen();
+            });
         }
 
         RecyclerView historyRecycler = findViewById(R.id.historyRecycler);
@@ -309,6 +322,31 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Sizes the 4 recent-bill cards so together they fill all the space between
+     * the "Recent Bills" header and the bottom navigation (no blank white area).
+     */
+    private void fitRecentBillsToScreen() {
+        if (homeScroll == null || recentRecyclerView == null || recentAdapter == null) return;
+        if (containerHome == null || containerHome.getVisibility() != View.VISIBLE) return;
+        homeScroll.post(() -> {
+            int top = recentRecyclerView.getTop();
+            if (top <= 0 || homeScroll.getHeight() <= 0) return;
+
+            float d = getResources().getDisplayMetrics().density;
+            int gap = Math.round(12 * d); // must match layout_marginBottom in item_recent_bill.xml
+            int available = homeScroll.getHeight() - homeScroll.getPaddingBottom() - top
+                    - recentRecyclerView.getPaddingTop() - recentRecyclerView.getPaddingBottom();
+
+            int perItem = available / RECENT_BILLS_LIMIT;
+            int height = perItem - gap;
+
+            int min = Math.round(84 * d);
+            int max = Math.round(130 * d);
+            recentAdapter.setItemHeightPx(Math.max(min, Math.min(max, height)));
+        });
+    }
+
     private void showDashboard() {
         TextView name = findViewById(R.id.txtAccountName);
         TextView totalSpent = findViewById(R.id.txtTotalSpent);
@@ -336,11 +374,12 @@ public class HomeActivity extends AppCompatActivity {
             txtHistorySubtitle.setText(count + (count == 1 ? " bill split so far" : " bills split so far"));
         }
 
-        List<BillStorage.Bill> recentBills = BillStorage.getRecentBills(this, username, 3);
+        List<BillStorage.Bill> recentBills = BillStorage.getRecentBills(this, username, RECENT_BILLS_LIMIT);
         if (recentAdapter != null) recentAdapter.setBills(recentBills);
         boolean isRecentEmpty = recentBills.isEmpty();
         if (emptyRecent != null) emptyRecent.setVisibility(isRecentEmpty ? View.VISIBLE : View.GONE);
         if (recentRecycler != null) recentRecycler.setVisibility(isRecentEmpty ? View.GONE : View.VISIBLE);
+        fitRecentBillsToScreen();
 
         List<BillStorage.Bill> allBills = BillStorage.getRecentBills(this, username, Integer.MAX_VALUE);
         if (historyAdapter != null) historyAdapter.setBills(allBills);

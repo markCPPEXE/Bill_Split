@@ -26,6 +26,7 @@ public class RecentBillAdapter extends RecyclerView.Adapter<RecentBillAdapter.Bi
     private final boolean isHistoryMode;
     private OnBillActionListener listener;
     private int lastPosition = -1;
+    private int itemHeightPx = 0; // 0 = wrap_content
 
     public RecentBillAdapter() {
         this(false);
@@ -37,6 +38,14 @@ public class RecentBillAdapter extends RecyclerView.Adapter<RecentBillAdapter.Bi
 
     public void setOnBillActionListener(OnBillActionListener listener) {
         this.listener = listener;
+    }
+
+    /** Home tab only: makes every card this tall so the list fills the screen. */
+    public void setItemHeightPx(int heightPx) {
+        if (heightPx != itemHeightPx) {
+            itemHeightPx = heightPx;
+            notifyDataSetChanged();
+        }
     }
 
     public void setBills(List<BillStorage.Bill> newBills) {
@@ -60,6 +69,14 @@ public class RecentBillAdapter extends RecyclerView.Adapter<RecentBillAdapter.Bi
         if (pos == RecyclerView.NO_POSITION) pos = position;
 
         BillStorage.Bill bill = bills.get(pos);
+
+        if (!isHistoryMode && itemHeightPx > 0) {
+            ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
+            if (lp != null && lp.height != itemHeightPx) {
+                lp.height = itemHeightPx;
+                holder.itemView.setLayoutParams(lp);
+            }
+        }
 
         if (holder.merchant != null) holder.merchant.setText(bill.merchant);
 

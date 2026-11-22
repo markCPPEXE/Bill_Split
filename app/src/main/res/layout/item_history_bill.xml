@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
-    app:cardBackgroundColor="#FFFFFF"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="20dp"
     app:cardElevation="0dp"
-    app:strokeColor="#E8EDF5"
+    app:strokeColor="@color/stroke_card"
     app:strokeWidth="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +21,7 @@
             android:id="@+id/badgeCard"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            app:cardBackgroundColor="#FFF1D6"
+            app:cardBackgroundColor="@color/bg_gold_badge"
             app:cardCornerRadius="12dp"
             app:cardElevation="0dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,8 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="M"
-                android:textColor="#C68A1A"
+                android:textColor="@color/text_gold"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </com.google.android.material.card.MaterialCardView>
@@ -46,8 +45,7 @@
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="McDonald's"
-            android:textColor="#111827"
+            android:textColor="@color/text_primary"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/txtPerPersonAmount"
@@ -63,8 +61,7 @@
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="11/21/2026"
-            android:textColor="#6B7280"
+            android:textColor="@color/text_secondary"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@id/txtPerPersonAmount"
             app:layout_constraintStart_toEndOf="@id/badgeCard"
@@ -75,8 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:text="₱833.33"
-            android:textColor="#2962FF"
+            android:textColor="@color/colorPrimary"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/btnDelete"
@@ -87,12 +83,12 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:clickable="true"
-            android:contentDescription="Delete bill"
+            android:contentDescription="@string/delete_bill"
             android:focusable="true"
-            app:cardBackgroundColor="#FEF2F2"
+            app:cardBackgroundColor="@color/bg_error_alt"
             app:cardCornerRadius="14dp"
             app:cardElevation="0dp"
-            app:strokeColor="#FEE2E2"
+            app:strokeColor="@color/bg_error_light"
             app:strokeWidth="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/badgeCard">
@@ -101,9 +97,9 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"
-                android:contentDescription="Delete icon"
+                android:contentDescription="@string/delete_icon"
                 android:src="@drawable/ic_delete"
-                app:tint="#DC2626" />
+                app:tint="@color/color_error" />
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Split to Box -->
@@ -113,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="6dp"
-            app:cardBackgroundColor="#F5F7FB"
+            app:cardBackgroundColor="@color/bg_screen"
             app:cardCornerRadius="12dp"
             app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -132,8 +128,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Split to"
-                    android:textColor="#6B7280"
+                    android:text="@string/label_split_people"
+                    android:textColor="@color/text_secondary"
                     android:textSize="11sp" />
 
                 <TextView
@@ -141,8 +137,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="6 people"
-                    android:textColor="#111827"
+                    android:textColor="@color/text_primary"
                     android:textSize="13sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -154,7 +149,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            app:cardBackgroundColor="#F5F7FB"
+            app:cardBackgroundColor="@color/bg_screen"
             app:cardCornerRadius="12dp"
             app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="@id/splitToBox"
@@ -172,8 +167,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total bill"
-                    android:textColor="#6B7280"
+                    android:text="@string/total_bill"
+                    android:textColor="@color/text_secondary"
                     android:textSize="11sp" />
 
                 <TextView
@@ -181,8 +176,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="₱5,000"
-                    android:textColor="#111827"
+                    android:textColor="@color/text_primary"
                     android:textSize="13sp"
                     android:textStyle="bold" />
             </LinearLayout>
