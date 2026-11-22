@@ -16,11 +16,11 @@
     <string name="txtTotalSpent">₱399.34</string>
     <string name="bill_splitted">Bill splitted</string>
     <string name="txtBillSplitted">2</string>
-    <string name="recent_bill">Recent bill</string>"
+    <string name="recent_bill">Recent bill</string>
     <string name="biller">Jollibee</string>
-    <string name="split_to">Split to  :</string>"
-    <string name="total_bill">Total Bill  :</string>"
-    <string name="split_cost">Split Cost  :</string>"
-    <string name="date">Date       :</string>"
+    <string name="split_to">Split to  :</string>
+    <string name="total_bill">Total Bill  :</string>
+    <string name="split_cost">Split Cost  :</string>
+    <string name="date">Date       :</string>
 
 </resources>
