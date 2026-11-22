@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <!-- LOGO (or first-letter badge when there is no logo file) -->
+    <FrameLayout
+        android:layout_width="56dp"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Merchant logo"
+            android:scaleType="fitCenter"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txtLogoLetter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_logo_placeholder"
+            android:fontFamily="@font/azeretmono_bold"
+            android:gravity="center"
+            android:textColor="#1777F2"
+            android:textSize="22sp" />
+    </FrameLayout>
+
+    <!-- DETAILS -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtMerchant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textColor="#111111"
+            android:textSize="8sp" />
+
+        <TextView
+            android:id="@+id/txtSplitTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textColor="#111111"
+            android:textSize="8sp" />
+
+        <TextView
+            android:id="@+id/txtTotalBill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textColor="#111111"
+            android:textSize="8sp" />
+
+        <TextView
+            android:id="@+id/txtSplitCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textColor="#111111"
+            android:textSize="8sp" />
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textColor="#111111"
+            android:textSize="8sp" />
+    </LinearLayout>
+</LinearLayout>
